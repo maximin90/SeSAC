@@ -1,16 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
-# url = 'https://finance.naver.com/item/sise.nhn?code=005930'
-# response = requests.get(url)
-# soup = BeautifulSoup(response.text, 'html.parser')
-# print(soup)
+start_date = '2023-08-01'
+end_date = '2023-08-31'
 
-# url = 'https://finance.naver.com//item/sise_day.naver?code=005930'
-# agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
-# response = requests.get(url, headers = {'User-Agent': agent})
-# _soap = BeautifulSoup(response.text, 'html.parser')
-# response.status_code
+def format_date(date):
+    parts = date.split('.')
+    return f'{parts[0]}-{parts[1]}-{parts[2]}'
 
 def print_stock_price(code, page_num):
     result = [[], [], [], [], [], [], []]
@@ -35,9 +32,11 @@ def print_stock_price(code, page_num):
 
     for i in range(len(result[0])):
         print(result[0][i], result[1][i], result[2][i],result[3][i],result[4][i],result[5][i],result[6][i])
+    
+    if start_date <= date <= end_date:
+        data.append(f'Date: {date}, Closing Price: {closing_price}')
 
 
 stock_code = '005930'
-pages = 4
 
-print_stock_price(stock_code, pages)
+print_stock_price(stock_code, date)
