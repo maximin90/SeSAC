@@ -35,7 +35,7 @@ def print_stock_price(code, page_num):
                 result[6].append(tr[i].select('td')[6].text.strip())
 
     for i in range(len(result[0])):
-        if result[0][i] >= '2023.08.01' and result[0][i] <= '2023.08.31':
+        if  '2023.08.01' <= result[0][i]  <= '2023.08.31':
             print(result[0][i], result[1][i], result[2][i],result[3][i],result[4][i],result[5][i],result[6][i])
 
 
