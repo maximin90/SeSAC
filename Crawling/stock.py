@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import datetime
 
 # url = 'https://finance.naver.com/item/sise.nhn?code=005930'
 # response = requests.get(url)
@@ -34,7 +35,9 @@ def print_stock_price(code, page_num):
                 result[6].append(tr[i].select('td')[6].text.strip())
 
     for i in range(len(result[0])):
-        print(result[0][i], result[1][i], result[2][i],result[3][i],result[4][i],result[5][i],result[6][i])
+        if result[0][i] >= '2023.08.01' and result[0][i] <= '2023.08.31':
+            print(result[0][i], result[1][i], result[2][i],result[3][i],result[4][i],result[5][i],result[6][i])
+
 
 
 stock_code = '005930'
